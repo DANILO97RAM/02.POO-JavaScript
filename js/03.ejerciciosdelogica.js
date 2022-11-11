@@ -191,3 +191,37 @@ var d = {
     }
   },1)
 }
+// Si Ángela habla más bajo que Rosa y Celia habla más alto que Rosa, 
+// ¿habla Ángela más alto o más bajo que Celia?
+// An (-1)  0
+// Ro (0)   1
+// Ce (1)   2
+var e = {
+  angela : 0,
+  rosa: 0,
+  celia: 0,
+
+  operacion: function(){
+    if ( e.angela < e.rosa &&
+      e.celia > e.rosa){
+      return true
+    }else{
+      return false
+    }
+  },
+
+  interva: setInterval(function(){
+    e.angela = Math.round(Math.random()*3);
+    e.rosa = Math.round(Math.random()*3);
+    e.celia = Math.round(Math.random()*3);
+
+    if (e.operacion){
+      clearInterval(e.interva);
+      console.log('Tono de Angela: ',e.angela);
+      console.log('Tono de Rosa: ',e.rosa);
+      console.log('Tono de Celia: ',e.celia);
+
+    }
+  })
+
+}
