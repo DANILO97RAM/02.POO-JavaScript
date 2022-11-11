@@ -88,11 +88,46 @@ var b = {
       console.log('Caballo de Willy ',b.Willy);
 
     }
-  },1)
+  },10)
 }
 
+// galgo:   / (0)
+// dogo:    / +pondeco (Galgo(2))
+// alano:   / +Galgo &  - dogo (1)
+// pondeco: / +Galgo (1)
+// cual come menos? -> Galgo
 var c = {
   // Properties
+  galgo: 0,
+  dogo: 0,
+  alano: 0,
+  pondeco:0,
 
   // Methods
+  resultado: function(){
+    if (c.pondeco > c.galgo && 
+      c.alano > c.galgo &&
+      c.alano < c.dogo &&
+      c.dogo > c.pondeco){
+        return true;
+    }else{
+    return false;
+    }
+  },
+
+  intervalo: setInterval(function(){
+
+    c.galgo = Math.round(Math.random()*2);
+    c.dogo = Math.round(Math.random()*2);
+    c.alano = Math.round(Math.random()*2);
+    c.pondeco = Math.round(Math.random()*2);
+
+    if (c.resultado()){
+      clearInterval(c.intervalo);
+      console.log('Galgo: ',c.galgo);
+      console.log('Dogo: ',c.dogo);
+      console.log('Alano: ',c.alano);
+      console.log('Pondeco: ',c.pondeco);
+    }
+  },10)
 }
