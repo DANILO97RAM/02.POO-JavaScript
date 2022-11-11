@@ -131,3 +131,63 @@ var c = {
     }
   },10)
 }
+
+// Seis amigos desean pasar sus vacaciones juntos y deciden, cada dos, utilizar diferentes
+// medios de transporte; sabemos que Alejandro no utiliza el coche ya que éste acompaña a 
+// Benito que no va en avión. Andrés viaja en avión. Si Carlos no va acompañado de Darío ni 
+// hace uso del avión, podría Vd. decirnos en qué medio de transporte llega a su destino Tomás.
+// 
+// Alejo  !Car: (0)!Avion: (0)!Otro: (3)
+// Benito !Car: (0)!Avion: (0)!Otro: (3)
+// Andres !Car: (0)!Avion: (2)!Otro: (0)
+// Carlos !Car: (1)!Avion: (0)!Otro: (0) 
+// Dario  !Car: (0)!Avion: (2)!Otro: (0)
+// Tomas  !Car: (1)!Avion: (0)!Otro: (0)
+
+var d = {
+  
+  Alejo: 0,
+  Benito: 0,
+  Andres: 0,
+  Carlos: 0,
+  Dario: 0,
+  Tomas: 0,
+
+  resultado: function(){
+    if (d.Alejo == d.Benito && 
+      d.Carlos != d.Dario &&
+      d.Carlos != d.Andres &&
+      d.Andres == 1 &&
+      // (1) sera Avion, los otros pueden cambiar
+      
+      // salen del texto que no cumplen
+      d.Alejo != d.Andres && d.Alejo != d.Carlos && d.Alejo != d.Dario && d.Alejo != d.Tomas &&
+      d.Benito != d.Andres && d.Benito != d.Carlos && d.Benito != d.Dario && d.Benito != d.Tomas
+      
+      ){
+        return true;
+    }else{
+      return false;
+    }
+    
+  },
+
+  intervalo: setInterval(function(){
+    d.Alejo = Math.round(Math.random()*2);
+    d.Benito = Math.round(Math.random()*2);
+    d.Andres = Math.round(Math.random()*2);
+    d.Carlos = Math.round(Math.random()*2);
+    d.Dario = Math.round(Math.random()*2);
+    d.Tomas = Math.round(Math.random()*2);
+
+    if (d.resultado()){
+      clearInterval(d.intervalo);
+      console.log('Alejo ',d.Alejo, ' : Otro');
+      console.log('Benito ',d.Benito, ' : Otro');
+      console.log('Andres ',d.Andres, ' : Avion');
+      console.log('Dario ',d.Dario,' : Avion');
+      console.log('Carlos ',d.Carlos,' : Carro');
+      console.log('Tomas ',d.Tomas, ' : Carro');
+    }
+  },1)
+}
